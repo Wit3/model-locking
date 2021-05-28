@@ -49,4 +49,24 @@ abstract class LockEvent implements ShouldBroadcast
     {
         return config('model_locking.broadcast_as.'.static::class) ?: static::class;
     }
+
+    /**
+     * Determine if this event should broadcast.
+     *
+     * @return bool
+     */
+    public function broadcastWhen()
+    {
+        return config('model_locking.broadcast_enabled', true);
+    }
+
+        /**
+     * Get the queue where broadcasts are dispatched to.
+     *
+     * @return string|null
+     */
+    public function broadcastQueue()
+    {
+        return config('model_locking.broadcast_queue');
+    }
 }
