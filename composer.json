@@ -1,5 +1,5 @@
 {
-    "name": "sofa/model-locking",
+    "name": "wit3/model-locking",
     "description": "Pseudo pessimistic model locking with broadcasted events for Laravel Eloquent ORM.",
     "license": "MIT",
     "support": {
@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "illuminate/database": "^5.5|^6.0|^7.0",
-        "illuminate/queue": "^5.5|^6.0|^7.0"
+        "php": "^7.3",
+        "illuminate/database": "^5.5|^6.0|^7.0|^8.0",
+        "illuminate/queue": "^5.5|^6.0|^7.0|^8.0"
     },
     "require-dev": {
         "kahlan/kahlan": "~2.5"
