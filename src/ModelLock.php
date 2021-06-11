@@ -13,15 +13,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
  */
 class ModelLock extends Model
 {
-    
-     /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    protected $with = ['user'];
-    
-    
+           
     /** @var array Attributes mutated to Carbon */
     protected $casts = [
         'locked_until' => 'datetime',
