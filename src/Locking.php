@@ -99,7 +99,12 @@ trait Locking
             $duration = $this->lock_duration;
         }
 
-        $lock = $this->modelLock()->firstOrNew([])->lock($duration, $user);
+        if (is_null($this->modelLock)) {
+            $lock = $this->modelLock()->create([])->lock($duration, $user);            
+        }
+        else{
+            $lock = $this->modelLock->lock($duration, $user);
+        }
 
         $this->setRelation('modelLock', $lock);
 
