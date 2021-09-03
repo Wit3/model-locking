@@ -48,6 +48,11 @@ class ModelLock extends Model
             }
         });
     }
+           
+    public function getTable()
+    {
+        return config('model_locking.table_name', parent::getTable());
+    }
 
     /**
      * Get token identifying this lock.
