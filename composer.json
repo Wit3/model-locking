@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/database": "^8.0",
-        "illuminate/support": "^8.0"
+        "illuminate/database": "^8.0|^9",
+        "illuminate/support": "^8.0|^9"
     },
     "require-dev": {
         "kahlan/kahlan": "~2.5"
