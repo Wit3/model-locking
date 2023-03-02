@@ -8,8 +8,16 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * @package sofa/model-locking
- * @author Jarek Tkaczyk <jarek@softonsofa.com>
- * @link https://github.com/jarektkaczyk/model-locking
+ * @author wit3 <scalzi.salvatore@gmail.com>
+ * @link https://github.com/wit3/model-locking
+ * 
+ * @property string $model_type
+ * @property int $model_id
+ * @property string $token
+ * @property Carbon $locked_until
+ * @property ?int $user_id
+ * @property ?Carbon $created_at
+ * @property ?Carbon $updated_at
  */
 class ModelLock extends Model
 {
@@ -28,7 +36,7 @@ class ModelLock extends Model
     {
         parent::boot();
 
-        static::saving(function ($lock) {
+        static::saving(function (self $lock) {
             if (!$lock->isDirty('locked_until')) {
                 $lock->locked_until = $lock->lockTimestamp();
             }
@@ -42,7 +50,7 @@ class ModelLock extends Model
             }
         });
 
-        static::deleted(function ($lock) {
+        static::deleted(function (self $lock) {
             if ($lock->model && $events = $lock->getEventDispatcher()) {
                 $events->dispatch(new ModelUnlocked($lock->model));
             }
