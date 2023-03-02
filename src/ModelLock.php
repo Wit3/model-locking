@@ -49,9 +49,14 @@ class ModelLock extends Model
         });
     }
            
+    public function getConnectionName()
+    {
+        return config('model_locking.connection_name', parent::getConnectionName());
+    }
+
     public function getTable()
     {
-        return config('model_locking.table_name', parent::getTable());
+        return config('model_locking.table_name', parent::getConnection());
     }
 
     /**
